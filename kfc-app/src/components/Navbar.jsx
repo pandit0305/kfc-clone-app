@@ -40,7 +40,7 @@ export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <Box position={"fixed"} w="100%">
+    <Box position={"fixed"} w="100%" zIndex={'1000'} bgColor={"white"}>
       <Flex
         justifyContent={"space-between"}
         w="1103.12px"
@@ -116,7 +116,7 @@ export default function Navbar() {
             bgColor={"#202124"}
             _hover={{ background: "rgba(0, 0, 0, 0.8)" }}
           >
-            <Center mt={"5px"} cursor="pointer">
+            <Center mt={"0px"} cursor="pointer">
               <Text mt={"10px"}>
                 <Icon
                   icon="carbon:location-filled"
