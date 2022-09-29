@@ -28,7 +28,7 @@ const order = "Start Order";
 const login = <Icon icon="teenyicons:user-circle-solid" fontSize={"30px"} />;
 const cart = <Icon icon="mingcute:shopping-bag-2-line" fontSize={"30px"} />;
 
-const temp = (
+export const temp = (
   <Grid w={"45px"} templateColumns={"repeat(3,1fr)"}>
     <GridItem w="8px" h={"18px"} border="1px solid red" bg={"red"}></GridItem>
     <GridItem w="8px" h={"18px"} border="1px solid red" bg={"red"}></GridItem>
