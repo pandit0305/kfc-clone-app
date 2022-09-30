@@ -10,7 +10,7 @@ import Cart from "../Pages/Cart";
 import {Routes, Route} from 'react-router-dom';
 import Navbar from "../components/Navbar";
 import { Box } from "@chakra-ui/react";
-
+import Chicken from "../Pages/Menupage/Chicken";
 
 export default function AllRouters(){
     return (
