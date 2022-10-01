@@ -21,13 +21,10 @@ import {
   Table,
   Tr,
   Td,
-  Input,
 } from "@chakra-ui/react";
 import {
   AlertDialog,
   AlertDialogBody,
-  AlertDialogFooter,
-  AlertDialogHeader,
   AlertDialogContent,
   AlertDialogOverlay,
   useDisclosure,
@@ -57,13 +54,22 @@ export default function Cart() {
   const gst = ((total * 5) / 100).toFixed(2);
   const checkout = (Number(subtotal) + Number(gst) + 35).toFixed(2);
 
+  const sum = state
+    .map((ele) => {
+      return ele.quantity;
+    })
+    .reduce((acc, i) => {
+      return acc + i;
+    },0);
+
+  
   return (
     <Box>
-      <Box w={"1102.12px"} m={"auto"} h={'auto'} >
+      <Box w={"1102.12px"} m={"auto"} h={"auto"}>
         <Spacer h={"150px"} />
         <Heading>MY CART</Heading>
-        <Grid templateColumns={"repeat(2, 1fr)"} mt={"50px"} gap={"20px"} >
-          <GridItem w={"755px"}  borderRadius={"5px"}>
+        <Grid templateColumns={"repeat(2, 1fr)"} mt={"50px"} gap={"20px"}>
+          <GridItem w={"755px"} borderRadius={"5px"}>
             {state.map((ele) => (
               <Flex
                 bgColor={"#F8F7F5"}
@@ -228,8 +234,8 @@ export default function Cart() {
           >
             <Box w={"300px"} m={"auto"}>
               <Flex mt={"30px"} justifyContent={"space-between"} width={"80px"}>
-                <Heading fontSize={"24px"}>{state.length}</Heading>
-                <Heading letterSpacing={"-3px"} fontSize={"24px"}>
+                <Heading fontSize={"24px"}>{sum}</Heading>
+                <Heading letterSpacing={"-3px"} fontSize={"24px"} ml={"10px"}>
                   ITEMS
                 </Heading>
               </Flex>

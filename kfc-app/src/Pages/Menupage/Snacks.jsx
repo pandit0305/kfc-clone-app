@@ -63,7 +63,7 @@ import {
                 borderRadius={"10px"}
                 boxShadow={"lg"}
                 key={ele.id}
-    
+                position="relative"
               >
                 <Img
                   src={ele.image}
@@ -77,16 +77,17 @@ import {
                   m={"10px 0px 10px 0px"}
                   w={"200px"}
                   pl={"10px"}
+                  ml={"15px"}
                 >
                   {ele.name}
                 </Heading>
-                <Heading fontSize={"16px"} m={"10px 0px 10px 0px"} pl={"10px"}>
+                <Heading fontSize={"16px"} m={"10px 0px 10px 0px"} pl={"10px"} ml={"15px"}>
                   {ele.price}
                 </Heading>
-                <p style={{ width: "210px", marginLeft: "10px" }}>
+                <p style={{ width: "210px", marginLeft: "20px" }} >
                   {ele.detail}
                 </p>
-                <Box m={"30px 0px 30px 0px"}>
+                <Box m={"30px 0px 30px 0px"} position="absolute" bottom={"5px"} left="30px">
                   <Center>
                     <Button
                       w={"184px"}
@@ -94,7 +95,7 @@ import {
                       borderRadius={"30px"}
                       bgColor={"red"}
                       color={"white"}
-                      _hover={{ background: "rgba(255, 0, 0, 0.8)" }}
+                      _hover={{ background: "rgba(255, 0, 0, 0.8)"}}
                       onClick={()=>dispatch(addToCart(ele))}
 
                     >

@@ -6,10 +6,11 @@ import {
   Flex,
   Grid,
   GridItem,
+  Text
 } from "@chakra-ui/react";
 import { Divider } from "@chakra-ui/react";
 import { data } from "./category._data";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 export default function Category() {
   return (
     <Box>
@@ -29,7 +30,7 @@ export default function Category() {
           rowGap={"30px"}
         >
           {data.map((ele) => (
-            <Link to={'/menu#launch'}>
+            <Link to={"/menu#launch"}>
               <GridItem
                 w={"243.141px"}
                 h={"243px"}
@@ -53,6 +54,23 @@ export default function Category() {
               </GridItem>
             </Link>
           ))}
+          <GridItem
+            w={"243.141px"}
+            h={"243px"}
+            boxShadow={"md"}
+            bgColor={"#F8F7F5"}
+          >
+            <Img
+              src="https://online.kfc.co.in/static/media/finger_lickin.fc21c805.svg"
+              alt="image_view"
+              w={"184px"}
+              h={"180px"}
+              m={"auto"}
+            />
+            <NavLink to={'/menu'}>
+            <Text fontSize={"14px"} textAlign={"center"} fontWeight={"bold"}>View All Menu →</Text>
+            </NavLink>
+          </GridItem>
         </Grid>
       </Box>
     </Box>

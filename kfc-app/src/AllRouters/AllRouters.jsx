@@ -10,7 +10,7 @@ import Cart from "../Pages/Cart";
 import {Routes, Route} from 'react-router-dom';
 import Navbar from "../components/Navbar";
 import { Box } from "@chakra-ui/react";
-import Chicken from "../Pages/Menupage/Chicken";
+// import Chicken from "../Pages/Menupage/Chicken";
 
 export default function AllRouters(){
     return (
@@ -28,6 +28,7 @@ export default function AllRouters(){
                 <Route path="/find_kfc" element={<Findkfc/>}></Route>
                 <Route path="/start_order" element={<Startorder/>}></Route>
                 <Route path="/cart" element={<Cart/>}></Route>
+                {/* <Route path="/chicken" element={<Chicken/>}></Route> */}
             </Routes>        
         </>
     )
