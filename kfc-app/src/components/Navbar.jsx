@@ -1,3 +1,4 @@
+
 import { Flex, Box, Grid, GridItem, Button, Center } from "@chakra-ui/react";
 import { Icon } from "@iconify/react";
 import {
@@ -14,6 +15,9 @@ import {
 } from "@chakra-ui/react";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
 import { NavLink } from "react-router-dom";
+
+
+
 
 const links = [
   { path: "/menu", title: "Menu" },
@@ -36,6 +40,8 @@ export const temp = (
     <GridItem w="8px" h={"18px"} border="1px solid red" bg={"red"}></GridItem>
   </Grid>
 );
+
+
 
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -95,7 +101,7 @@ export default function Navbar() {
                 {order}
               </Button>
             </NavLink>
-            <NavLink to={"/login"}>
+            <NavLink to='/login'>
               <Button _hover={"none"} bg={"white"}>
                 {login}
               </Button>
