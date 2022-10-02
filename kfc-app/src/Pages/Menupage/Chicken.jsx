@@ -5,7 +5,6 @@ import {
   GridItem,
   Img,
   Heading,
-  Button,
 } from "@chakra-ui/react";
 
 import axios from "axios";
@@ -13,19 +12,32 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 import React from "react";
-import { CartContext } from "../../context/cartcontext/CartContext";
-import { addToCart } from "../../context/cartcontext/action";
+import Loading from "../../loading/Loading";
+import CartButton from "../addtocart/CartButton";
+
+
+
 
 export default function Chicken() {
-  const { dispatch } = React.useContext(CartContext);
-
+  const [loading, setLoading] = useState(false)
   const [data, setData] = useState([]);
+
   useEffect(() => {
+    setLoading(true)
     axios({
-      url: "http://localhost:8000/chicken",
+      url: "https://my-app-server.onrender.com/chicken",
       method: "GET",
-    }).then((res) => setData(res.data));
+    }).then((res) => {
+    setLoading(false)
+    setData(res.data)})
+    .catch((err)=>{
+    setLoading(false)
+      console.log(err)
+    })
+    ;
   }, []);
+
+
   return (
     <>
     <div id="chicken"></div>
@@ -45,6 +57,7 @@ export default function Chicken() {
       </Box>
       <Spacer h={"20px"} />
 
+      {loading && <Loading/>}
       <Grid
         templateColumns={"repeat(2, 1fr)"}
         rowGap="50px"
@@ -69,21 +82,7 @@ export default function Chicken() {
             </Heading>
             <p style={{ width: "385px" }}>{ele.detail}</p>
             <Box m={"30px 0px 30px 0px"}>
-              <Button
-                w={"184px"}
-                h={"44px"}
-                borderRadius={"30px"}
-                bgColor={"red"}
-                color={"white"}
-                _hover={{ background: "rgba(255, 0, 0, 0.8)" }}
-                onClick={() => dispatch(addToCart(ele))}
-              >
-                Add to Cart{" "}
-                <Img
-                  src="https://online.kfc.co.in/static/media/Icon_Add_to_Cart.58b87a9b.svg"
-                  ml={"5px"}
-                />
-              </Button>
+              <CartButton ele={ele} id ={ele.id}/>
             </Box>
           </GridItem>
         ))}

@@ -30,7 +30,7 @@ export default function Category() {
           rowGap={"30px"}
         >
           {data.map((ele) => (
-            <Link to={"/menu#launch"}>
+            <Link to={"/menu"}>
               <GridItem
                 w={"243.141px"}
                 h={"243px"}
