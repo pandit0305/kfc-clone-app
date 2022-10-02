@@ -16,6 +16,7 @@ import {
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+
 const mypin = {
   a: "",
   b: "",
@@ -28,6 +29,8 @@ export default function Login() {
   const [pin, setPin] = useState(mypin);
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
+
+
   const { a, b, c, d } = pin;
 
   const Inputevent = (e) => {
@@ -53,6 +56,7 @@ export default function Login() {
     if (num === matchpin) {
         return navigate('/')
     }   
+    return navigate('/')
   };
 
   const sendform = (
@@ -241,7 +245,7 @@ export default function Login() {
         </Center>
 
         {display}
-        {/* {show ? { sendform } : { otpform }} */}
+      
       </Container>
     </Box>
   );

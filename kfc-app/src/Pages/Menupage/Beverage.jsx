@@ -5,7 +5,6 @@ import {
     GridItem,
     Img,
     Heading,
-    Button,
     Center
   } from "@chakra-ui/react";
   
@@ -14,22 +13,30 @@ import {
   import { useEffect } from "react";
   
   import React from "react";
-  import { CartContext } from "../../context/cartcontext/CartContext";
-  import { addToCart } from "../../context/cartcontext/action";
-  
-  export default function Burger() {
-    const { dispatch } = React.useContext(CartContext);
+  import Loading from "../../loading/Loading";
+  import CartButton from '../addtocart/CartButton'
 
+  export default function Burger() {
+  const [loading, setLoading] = useState(false)
     const [beverage, setBeverage] = useState([]);
   useEffect(() => {
+    setLoading(true)
     axios({
-      url: "http://localhost:8000/beverage",
+      url: "https://my-app-server.onrender.com/beverage",
       method: "GET",
-    }).then((res) => setBeverage(res.data));
+    }).then((res) => {
+    setLoading(false)
+      setBeverage(res.data)}
+      )
+      .catch((err)=>{
+        setLoading(false)
+        console.log(err)
+      })
+      ;
   }, []);
     return (
       <>
-                <div id="beverage"></div>
+        <div id="beverage"></div>
         <Box mt={"50px"} borderRadius={"5px"}>
           <Spacer h={"20px"} />
           <Box>
@@ -44,7 +51,7 @@ import {
             </Heading>
           </Box>
           <Spacer h={"20px"} />
-
+        {loading && <Loading/>}
           <Grid
             templateColumns={"repeat(3, 1fr)"}
             rowGap="50px"
@@ -88,22 +95,7 @@ import {
                 </p>
                 <Box m={"30px 0px 30px 0px"} position="absolute" bottom={"5px"} left="30px">
                   <Center>
-                    <Button
-                      w={"184px"}
-                      h={"44px"}
-                      borderRadius={"30px"}
-                      bgColor={"red"}
-                      color={"white"}
-                      _hover={{ background: "rgba(255, 0, 0, 0.8)" }}
-                      onClick={()=>dispatch(addToCart(ele))}
-
-                    >
-                      Add to Cart{" "}
-                      <Img
-                        src="https://online.kfc.co.in/static/media/Icon_Add_to_Cart.58b87a9b.svg"
-                        ml={"5px"}
-                      />
-                    </Button>
+                    <CartButton ele={ele}/>
                   </Center>
                 </Box>
               </GridItem>

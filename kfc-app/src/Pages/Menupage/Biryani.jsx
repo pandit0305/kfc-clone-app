@@ -5,28 +5,35 @@ import {
     GridItem,
     Img,
     Heading,
-    Button,
     Center,
   } from "@chakra-ui/react";
   
   import axios from "axios";
   import { useState } from "react";
   import { useEffect } from "react";
-  
+  import Loading from "../../loading/Loading";
   import React from "react";
-  import { CartContext } from "../../context/cartcontext/CartContext";
-  import { addToCart } from "../../context/cartcontext/action";
-  
+
+  import CartButton from "../addtocart/CartButton";
+
   export default function Biryani() {
-    const { dispatch } = React.useContext(CartContext);
-  
+    const [loading, setLoading] = useState(false)
     const [biryani, setBiryani] = useState([]);
 
     useEffect(() => {
+      setLoading(true)
       axios({
-        url: "http://localhost:8000/biryani",
+        url: "https://my-app-server.onrender.com/biryani",
         method: "GET",
-      }).then((res) => setBiryani(res.data));
+      }).then((res) => {
+        setLoading(false)
+        setBiryani(res.data)}
+        )
+        .catch((err)=>{
+          setLoading(false)
+          console.log(err)
+        })
+        ;
     }, []);
     return (
       <>
@@ -45,7 +52,7 @@ import {
             </Heading>
           </Box>
           <Spacer h={"20px"} />
-
+        {loading && <Loading/>}
           <Grid
             templateColumns={"repeat(3, 1fr)"}
             rowGap="50px"
@@ -89,22 +96,7 @@ import {
                 </p>
                 <Box position="absolute" bottom={"25px"} left="30px">
                   <Center>
-                    <Button
-                      w={"184px"}
-                      h={"44px"}
-                      borderRadius={"30px"}
-                      bgColor={"red"}
-                      color={"white"}
-                      _hover={{ background: "rgba(255, 0, 0, 0.8)" }}
-                      onClick={()=>dispatch(addToCart(ele))}
-
-                    >
-                      Add to Cart{" "}
-                      <Img
-                        src="https://online.kfc.co.in/static/media/Icon_Add_to_Cart.58b87a9b.svg"
-                        ml={"5px"}
-                      />
-                    </Button>
+                      <CartButton ele={ele}/>
                   </Center>
                 </Box>
               </GridItem>

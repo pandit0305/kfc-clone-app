@@ -1,20 +1,9 @@
-import {
-  Heading,
-  Box,
-  Img,
-  Spacer,
-  Flex,
-  Grid,
-  GridItem,
-  Text,
-  Center,
-  useMediaQuery
-} from "@chakra-ui/react";
+import { Box, Img, Spacer, Flex, Text, useMediaQuery } from "@chakra-ui/react";
 import { Icon } from "@iconify/react";
 import { NavLink } from "react-router-dom";
 
 export default function Footer() {
-    const [isMobile] = useMediaQuery("(min-width: 768px)");
+  const [isMobile] = useMediaQuery("(min-width: 768px)");
   return (
     <Box bgColor="#202124" w={"100%"}>
       <Spacer h={"180px"} />
@@ -27,7 +16,6 @@ export default function Footer() {
         justifyContent={"space-evenly"}
         // flexWrap={"wrap"}
         direction={isMobile ? "row" : "column"}
-        
       >
         <Box mr={"70px"}>
           <a href={"/"}>
@@ -147,7 +135,7 @@ export default function Footer() {
         </Box>
 
         <Box>
-          <a target="_blank" href="https://restaurants.kfc.co.in/">
+          <a target="_blank" rel="noreferrer" href="https://restaurants.kfc.co.in/">
             <Flex>
               <Text mt={"10px"}>
                 <Icon
@@ -165,6 +153,7 @@ export default function Footer() {
         <Box>
           <a
             target={"_blank"}
+            rel="noreferrer"
             href="https://play.google.com/store/apps/details?id=com.yum.kfc"
           >
             {" "}
@@ -177,6 +166,7 @@ export default function Footer() {
         <Box>
           <a
             target={"_blank"}
+            rel="noreferrer"
             href="https://apps.apple.com/in/app/kfc-india/id915824379"
           >
             <Img
@@ -197,6 +187,7 @@ export default function Footer() {
           <Flex justifyContent={"space-around"}>
             <a
               target={"_blank"}
+              rel="noreferrer"
               href="https://www.instagram.com/kfcindia_official/"
             >
               <Img
@@ -204,13 +195,13 @@ export default function Footer() {
                 alt="instagram"
               />
             </a>
-            <a target={"_blank"} href="https://www.facebook.com/KFCIndia">
+            <a target={"_blank"} rel="noreferrer" href="https://www.facebook.com/KFCIndia">
               <Img
                 src="https://images.ctfassets.net/wtodlh47qxpt/dKiu2meLcfz2DNwsg7nZw/7194830b1ba6f25b158a23d6b2c4752c/Social_Facebook_White.svg"
                 alt="facebook"
               />
             </a>
-            <a target={"_blank"} href="https://twitter.com/KFC_India">
+            <a target={"_blank"} rel="noreferrer" href="https://twitter.com/KFC_India">
               <Img
                 src="https://images.ctfassets.net/wtodlh47qxpt/78z9x0WwdkdXwGVK726EKX/6599ca34ec88e2a6f46d7d94ed85a8ad/Social_Twitter_White.svg"
                 alt="twiter"

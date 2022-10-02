@@ -1,11 +1,10 @@
 import React from "react";
 import { CartContext } from "../context/cartcontext/CartContext";
+import AddButton from "./addtocart/AddButton";
+
 import {
-  checkout,
   removeFromCart,
-  removeAll,
-  Increment,
-  Decrement,
+  removeAll
 } from "../context/cartcontext/action";
 import { NavLink } from "react-router-dom";
 import {
@@ -120,7 +119,8 @@ export default function Cart() {
                   w={"200px"}
                   mr={"20px"}
                 >
-                  <Button
+                  <AddButton id={ele.id} quantity={ele.quantity}/>
+                  {/* <Button
                     borderRadius={"50%"}
                     border={"1px solid black"}
                     transform={"rotate(90deg)"}
@@ -140,7 +140,7 @@ export default function Cart() {
                     onClick={() => dispatch(Increment(ele.id))}
                   >
                     +
-                  </Button>
+                  </Button> */}
                   <Box>
                     <Heading fontSize={"16px"} color={"grey"}>
                       {(ele.price * ele.quantity).toFixed(2)}
