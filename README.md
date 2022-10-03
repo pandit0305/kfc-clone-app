@@ -4,4 +4,4 @@ Vercel link
 https://kfc-app-pandit0305.vercel.app/
 
 netlify link
-https://jbdksjdfhkjnfghk.netlify.app/
+https://mykfc-app.netlify.app/
