@@ -1,3 +1,4 @@
+import {HashLink} from 'react-router-hash-link';
 import { Box, Grid, GridItem, Text } from "@chakra-ui/react";
 
 
@@ -23,7 +24,7 @@ export const Menusidebar = ()=>{
                 m={"20px 0px 20px 0px"}
                 cursor={"pointer"}
             >
-                <a href="#chicken">CHICKEN BUCKETS</a>
+                <HashLink smooth to="/menu/#chicken">CHICKEN BUCKETS</HashLink>
             </Text>
             <Text
                 fontSize={"16px"}
@@ -33,7 +34,7 @@ export const Menusidebar = ()=>{
                 m={"20px 0px 20px 0px"}
                 cursor={"pointer"}
             >
-                <a href="#launch">NEW LAUNCH</a>
+                <HashLink smooth to="/menu/#launch">NEW LAUNCH</HashLink>
             </Text>
             <Text
                 fontSize={"16px"}
@@ -43,7 +44,7 @@ export const Menusidebar = ()=>{
                 m={"20px 0px 20px 0px"}
                 cursor={"pointer"}
             >
-                <a href="#biryani">BIRYANI BUCKETS</a>
+                <HashLink smooth to="/menu/#biryani">BIRYANI BUCKETS</HashLink>
             </Text>
             <Text
                 fontSize={"16px"}
@@ -53,7 +54,7 @@ export const Menusidebar = ()=>{
                 m={"20px 0px 20px 0px"}
                 cursor={"pointer"}
             >
-                <a href="#meal">BOX MEALS</a>
+                <HashLink smooth to="/menu/#meal">BOX MEALS</HashLink>
             </Text>
             <Text
                 fontSize={"16px"}
@@ -63,7 +64,7 @@ export const Menusidebar = ()=>{
                 m={"20px 0px 20px 0px"}
                 cursor={"pointer"}
             >
-                <a href="#burger">BURGERS</a>
+                <HashLink smooth to="/menu/#burger">BURGERS</HashLink>
             </Text>
             <Text
                 fontSize={"16px"}
@@ -73,7 +74,7 @@ export const Menusidebar = ()=>{
                 m={"20px 0px 20px 0px"}
                 cursor={"pointer"}
             >
-                <a href="#homemeal">STAY HOME SPECIALS</a>
+                <HashLink smooth to="/menu/#homemeal">STAY HOME SPECIALS</HashLink>
             </Text>
             <Text
                 fontSize={"16px"}
@@ -83,7 +84,7 @@ export const Menusidebar = ()=>{
                 m={"20px 0px 20px 0px"}
                 cursor={"pointer"}
             >
-                <a href="#snack">SNACKS</a>
+                <HashLink smooth to="/menu/#snack">SNACKS</HashLink>
             </Text>
             <Text
                 fontSize={"16px"}
@@ -93,7 +94,7 @@ export const Menusidebar = ()=>{
                 m={"10px 0px 10px 0px"}
                 cursor={"pointer"}
             >
-                <a href="#beverage">BEVERAGES</a>
+                <HashLink smooth to="/menu/#beverage">BEVERAGES</HashLink>
             </Text>
             </Box>
         </GridItem>

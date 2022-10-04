@@ -1,3 +1,9 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { authentication } from "../firebase-config";
+import { RecaptchaVerifier } from "firebase/auth";
+import { signInWithPhoneNumber } from "firebase/auth";
+
 import {
   Box,
   Spacer,
@@ -13,9 +19,6 @@ import {
   PinInputField,
   HStack,
 } from "@chakra-ui/react";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-
 
 const mypin = {
   a: "",
@@ -23,40 +26,80 @@ const mypin = {
   c: "",
   d: "",
 };
+
 export default function Login() {
-  const [phone, setPhone] = useState("");
-  const [otp, setOtp] = useState("1234");
+
+  const countryCode  = "+91";
+  const [phone, setPhone] = useState(countryCode);
   const [pin, setPin] = useState(mypin);
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
 
-
-  const { a, b, c, d } = pin;
+  const { a, b, c, d, e, f } = pin;
 
   const Inputevent = (e) => {
-    setPhone(e.target.value);
+    setPhone(e.target.value)
   };
 
-  const SendEvent = () => {
-    const number = 7979995281;
-    if (number === Number(phone)) {
-      setOtp(otp);
-      setShow(true);
+  const generateourCaptcha = ()=>{
+    window.recaptchaVerifier = new RecaptchaVerifier('recaptcha-box', {
+      'size':'invisible',
+      'callback':(response)=>{
+        // recaptcha solved, allow sign in with phone number
+      }
+    }, authentication)
+  }
+
+
+
+  const Sendotp = (e) => {
+    e.preventDefault()
+    if(phone.length >=12 ){
+      console.log(phone)
+      setShow(true)
+      generateourCaptcha()
+      let appVerifier = window.recaptchaVerifier;
+      setTimeout(() => {
+          signInWithPhoneNumber(authentication, phone, appVerifier)
+          .then(confirmationResult=>{
+            window.confirmationResult = confirmationResult;
+          })
+          .catch((err)=>{
+            console.log(err);
+          })
+        
+      }, 3000);
     }
+
   };
 
   const PinEvent = (e) => {
     const { name, value } = e.target;
     setPin({ ...pin, [name]: value });
+
+
   };
 
   const OnsubmitEvent = () => {
-    const num = "1234";
-    const matchpin = pin.a + pin.b + pin.c + pin.d;
-    if (num === matchpin) {
-        return navigate('/')
-    }   
-    return navigate('/')
+    const otp = pin.a + pin.b + pin.c + pin.d + pin.e + pin.f;
+
+    if(otp.length===6){
+      // console.log(otp);
+      const confirmationResult = window.confirmationResult;
+      confirmationResult.confirm(otp).then((result) => {
+        // User signed in successfully.
+        const user = result.user;
+        console.log(user)
+        // ...
+      }).catch((error) => {
+        // User couldn't sign in (bad verification code?)
+        console.log(error)
+        // ...
+      });
+
+      return navigate('/')
+    }
+
   };
 
   const sendform = (
@@ -69,7 +112,8 @@ export default function Login() {
       <Center mt={"30px"}>
         <Input
           placeholder="Phone Number*"
-          type={"number"}
+          type={"text"}
+          name={"phone"}
           value={phone}
           onChange={Inputevent}
           outline={"none"}
@@ -96,7 +140,7 @@ export default function Login() {
           bgColor={"black"}
           color={"white"}
           _hover={"none"}
-          onClick={SendEvent}
+          onClick={Sendotp}
         >
           Send Me a Code
         </Button>
@@ -125,7 +169,7 @@ export default function Login() {
   );
 
   const otpform = (
-    <Box>
+    <Box id="">
       <Center w={"450px"} textAlign="center" mt={"30px"}>
         <Text fontSize={"20px"} fontWeight={"bolder"} letterSpacing={"-1px"}>
           WE JUST TEXTED YOU
@@ -188,6 +232,24 @@ export default function Login() {
               value={d}
               onChange={PinEvent}
             />
+                        <PinInputField
+              borderTop={"none"}
+              borderLeft={"none"}
+              borderRight={"none"}
+              borderBottom={"1px solid black"}
+              name="e"
+              value={e}
+              onChange={PinEvent}
+            />
+                        <PinInputField
+              borderTop={"none"}
+              borderLeft={"none"}
+              borderRight={"none"}
+              borderBottom={"1px solid black"}
+              name="f"
+              value={f}
+              onChange={PinEvent}
+            />
           </PinInput>
         </HStack>
       </Center>
@@ -223,7 +285,7 @@ export default function Login() {
 
   return (
     <Box h={"1000px"}>
-      <Spacer h={"150px"} />
+      <Spacer h={"50px"} />
       <Container>
         <Center mt={"20px"}>
           <Text fontSize={"14px"} color="rgb(0,0,0)" fontWeight={"bold"}>
@@ -245,7 +307,11 @@ export default function Login() {
         </Center>
 
         {display}
-      
+        <Center>
+          <Box id="recaptcha-box">
+
+          </Box>
+        </Center>
       </Container>
     </Box>
   );

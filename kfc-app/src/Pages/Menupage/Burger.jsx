@@ -1,3 +1,6 @@
+import React from "react";
+import CartButton from '../addtocart/CartButton';
+import {burger} from "./menu-data/BurgerData";
 import {
     Box,
     Spacer,
@@ -8,36 +11,34 @@ import {
     Center
   } from "@chakra-ui/react";
   
-  import axios from "axios";
-  import { useState } from "react";
-  import { useEffect } from "react";
+  // import axios from "axios";
+  // import { useState } from "react";
+  // import { useEffect } from "react";
+  // import Loading from "../../loading/Loading";
   
-  import React from "react";
-  import Loading from "../../loading/Loading";
-  import CartButton from '../addtocart/CartButton';
 
   export default function Burger() {
-  const [loading, setLoading] = useState(false)
+  // const [loading, setLoading] = useState(false)
 
-    const [burger, setBurger] = useState([]);
-    useEffect(() => {
-      setLoading(true)
-      axios({
-        url: "https://my-app-server.onrender.com/burger",
-        method: "GET",
-      }).then((res) => {
-        setLoading(false)
-        setBurger(res.data)
-      })
-      .catch((ele)=>{
-        setLoading(false)
-      })
-      ;
-    }, []);
+  //   const [burger, setBurger] = useState([]);
+  //   useEffect(() => {
+  //     setLoading(true)
+  //     axios({
+  //       url: "https://my-app-server.onrender.com/burger",
+  //       method: "GET",
+  //     }).then((res) => {
+  //       setLoading(false)
+  //       setBurger(res.data)
+  //     })
+  //     .catch((ele)=>{
+  //       setLoading(false)
+  //     })
+  //     ;
+  //   }, []);
 
     return (
     <>
-        <div id="burger"></div>
+        <Box id="burger" h={"90px"}></Box>
         <Box mt={"50px"} borderRadius={"5px"}>
           <Spacer h={"20px"} />
           <Box>
@@ -52,7 +53,7 @@ import {
             </Heading>
           </Box>
           <Spacer h={"20px"} />
-          {loading && <Loading/>}
+          {/* {loading && <Loading/>} */}
           <Grid
             templateColumns={"repeat(3, 1fr)"}
             rowGap="50px"

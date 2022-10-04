@@ -1,3 +1,6 @@
+import React from "react";
+import CartButton from "../addtocart/CartButton";
+import { biryani } from "./menu-data/BiryaniData";
 import {
     Box,
     Spacer,
@@ -11,33 +14,32 @@ import {
   import axios from "axios";
   import { useState } from "react";
   import { useEffect } from "react";
-  import Loading from "../../loading/Loading";
-  import React from "react";
-
-  import CartButton from "../addtocart/CartButton";
+  // import Loading from "../../loading/Loading";
 
   export default function Biryani() {
-    const [loading, setLoading] = useState(false)
-    const [biryani, setBiryani] = useState([]);
 
-    useEffect(() => {
-      setLoading(true)
-      axios({
-        url: "https://my-app-server.onrender.com/biryani",
-        method: "GET",
-      }).then((res) => {
-        setLoading(false)
-        setBiryani(res.data)}
-        )
-        .catch((err)=>{
-          setLoading(false)
-          console.log(err)
-        })
-        ;
-    }, []);
+    // const [loading, setLoading] = useState(false)
+    // const [biryani, setBiryani] = useState([]);
+
+    // useEffect(() => {
+    //   setLoading(true)
+    //   axios({
+    //     url: "https://my-app-server.onrender.com/biryani",
+    //     method: "GET",
+    //   }).then((res) => {
+    //     setLoading(false)
+    //     setBiryani(res.data)}
+    //     )
+    //     .catch((err)=>{
+    //       setLoading(false)
+    //       console.log(err)
+    //     })
+    //     ;
+    // }, []);
+
     return (
       <>
-          <div id="biryani"></div>
+          <Box id="biryani" h={"90px"}></Box>
           <Box mt={"50px"} borderRadius={"5px"}>
           <Spacer h={"20px"} />
           <Box>
@@ -52,7 +54,7 @@ import {
             </Heading>
           </Box>
           <Spacer h={"20px"} />
-        {loading && <Loading/>}
+        {/* {loading && <Loading/>} */}
           <Grid
             templateColumns={"repeat(3, 1fr)"}
             rowGap="50px"

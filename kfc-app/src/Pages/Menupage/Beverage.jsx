@@ -1,3 +1,6 @@
+import React from "react";
+import CartButton from '../addtocart/CartButton';
+import {beverage} from './menu-data/BeverageData';
 import {
     Box,
     Spacer,
@@ -8,35 +11,35 @@ import {
     Center
   } from "@chakra-ui/react";
   
-  import axios from "axios";
-  import { useState } from "react";
-  import { useEffect } from "react";
+  // import axios from "axios";
+  // import { useState } from "react";
+  // import { useEffect } from "react";
+  // import Loading from "../../loading/Loading";
   
-  import React from "react";
-  import Loading from "../../loading/Loading";
-  import CartButton from '../addtocart/CartButton'
 
   export default function Burger() {
-  const [loading, setLoading] = useState(false)
-    const [beverage, setBeverage] = useState([]);
-  useEffect(() => {
-    setLoading(true)
-    axios({
-      url: "https://my-app-server.onrender.com/beverage",
-      method: "GET",
-    }).then((res) => {
-    setLoading(false)
-      setBeverage(res.data)}
-      )
-      .catch((err)=>{
-        setLoading(false)
-        console.log(err)
-      })
-      ;
-  }, []);
+
+  // const [loading, setLoading] = useState(false)
+  //   const [beverage, setBeverage] = useState([]);
+  // useEffect(() => {
+  //   setLoading(true)
+  //   axios({
+  //     url: "https://my-app-server.onrender.com/beverage",
+  //     method: "GET",
+  //   }).then((res) => {
+  //   setLoading(false)
+  //     setBeverage(res.data)}
+  //     )
+  //     .catch((err)=>{
+  //       setLoading(false)
+  //       console.log(err)
+  //     })
+  //     ;
+  // }, []);
+
     return (
       <>
-        <div id="beverage"></div>
+        <Box id="beverage" h={"90px"}></Box>
         <Box mt={"50px"} borderRadius={"5px"}>
           <Spacer h={"20px"} />
           <Box>
@@ -51,7 +54,7 @@ import {
             </Heading>
           </Box>
           <Spacer h={"20px"} />
-        {loading && <Loading/>}
+        {/* {loading && <Loading/>} */}
           <Grid
             templateColumns={"repeat(3, 1fr)"}
             rowGap="50px"

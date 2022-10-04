@@ -1,3 +1,6 @@
+import React from "react";
+import CartButton from "../addtocart/CartButton";
+import { launch } from "./menu-data/LaunchData";
 import {
   Box,
   Spacer,
@@ -8,33 +11,32 @@ import {
   Center,
 } from "@chakra-ui/react";
 
-import axios from "axios";
-import { useState } from "react";
-import { useEffect } from "react";
-import Loading from "../../loading/Loading";
-import React from "react";
-import CartButton from "../addtocart/CartButton";
+// import axios from "axios";
+// import { useState } from "react";
+// import { useEffect } from "react";
+// import Loading from "../../loading/Loading";
 
 export default function Launch() {
-  const [loading, setLoading] = useState(false);
-  const [launch, setLaunch] = useState([]);
-  useEffect(() => {
-    setLoading(true);
-    axios({
-      url: "https://my-app-server.onrender.com/launch",
-      method: "GET",
-    })
-      .then((res) => {
-        setLoading(false);
-        setLaunch(res.data);
-      })
-      .catch((err) => {
-        setLoading(false);
-      });
-  }, []);
+  // const [loading, setLoading] = useState(false);
+  // const [launch, setLaunch] = useState([]);
+  // useEffect(() => {
+  //   setLoading(true);
+  //   axios({
+  //     url: "https://my-app-server.onrender.com/launch",
+  //     method: "GET",
+  //   })
+  //     .then((res) => {
+  //       setLoading(false);
+  //       setLaunch(res.data);
+  //     })
+  //     .catch((err) => {
+  //       setLoading(false);
+  //     });
+  // }, []);
   return (
     <>
-      <div id="launch"></div>
+      <Box id="launch" h={"90px"}></Box>
+
       <Box mt={"50px"} borderRadius={"5px"}>
         <Spacer h={"20px"} />
         <Box>
@@ -49,7 +51,9 @@ export default function Launch() {
           </Heading>
         </Box>
         <Spacer h={"20px"} />
-        {loading && <Loading />}
+
+        {/* {loading && <Loading />} */}
+
         <Grid
           templateColumns={"repeat(3, 1fr)"}
           rowGap="50px"

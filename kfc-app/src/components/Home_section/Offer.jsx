@@ -4,25 +4,18 @@ import { NavLink } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Sticker from "./Sticker";
 import {
   Heading,
   Box,
   Img,
   Spacer,
   Flex,
-  Grid,
-  GridItem,
   Text,
   Center,
 } from "@chakra-ui/react";
 
-const sticker = (
-  <Grid w={"45px"} templateColumns={"repeat(3,1fr)"} gap={"15px"}>
-    <GridItem w="16px" h={"41px"} border="1px solid red" bg={"red"}></GridItem>
-    <GridItem w="16px" h={"41px"} border="1px solid red" bg={"red"}></GridItem>
-    <GridItem w="16px" h={"41px"} border="1px solid red" bg={"red"}></GridItem>
-  </Grid>
-);
+
 export default function Offer() {
   var settings = {
     dots: false,
@@ -63,7 +56,7 @@ export default function Offer() {
       <Spacer h={"100px"} />
       <Box w={"100%"} bgColor={"#202124"}>
         <Box w={"80%"} m={"auto"}>
-          {sticker}
+          <Sticker/>
           <Spacer h={"50px"} />
           <Flex color={"white"} justifyContent={"space-between"}>
             <Heading fontSize={"38px"}>OFFERS & DEALS</Heading>

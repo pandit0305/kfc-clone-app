@@ -1,3 +1,6 @@
+import React from "react";
+import CartButton from "../addtocart/CartButton";
+import { chicken } from "./menu-data/ChickenData";
 import {
   Box,
   Spacer,
@@ -7,41 +10,38 @@ import {
   Heading,
 } from "@chakra-ui/react";
 
-import axios from "axios";
-import { useState } from "react";
-import { useEffect } from "react";
-
-import React from "react";
-import Loading from "../../loading/Loading";
-import CartButton from "../addtocart/CartButton";
-
+// import axios from "axios";
+// import { useState } from "react";
+// import { useEffect } from "react";
+// import Loading from "../../loading/Loading";
 
 
 
 export default function Chicken() {
-  const [loading, setLoading] = useState(false)
-  const [data, setData] = useState([]);
+  // const [loading, setLoading] = useState(false)
+  // const [data, setData] = useState([]);
 
-  useEffect(() => {
-    setLoading(true)
-    axios({
-      url: "https://my-app-server.onrender.com/chicken",
-      method: "GET",
-    }).then((res) => {
-    setLoading(false)
-    setData(res.data)})
-    .catch((err)=>{
-    setLoading(false)
-      console.log(err)
-    })
-    ;
-  }, []);
+  // useEffect(() => {
+  //   setLoading(true)
+  //   axios({
+  //     url: "https://github.com/pandit0305/mockserver-app",
+  //     method: "GET",
+  //   }).then((res) => {
+  //   setLoading(false)
+  //   console.log(res)
+  //   setData(res.data)})
+  //   .catch((err)=>{
+  //   setLoading(false)
+  //     console.log(err)
+  //   })
+  //   ;
+  // }, []);
 
 
   return (
     <>
-    <div id="chicken"></div>
-    <Box bgColor={"#F8F7F5"} mt={"50px"} borderRadius={"5px"}>
+    <Box id="chicken" h={"90px"}></Box>
+    <Box bgColor={"#F8F7F5"} mt={"50px"} borderRadius={"5px"} >
        
       <Spacer h={"20px"} />
       <Box>
@@ -51,13 +51,14 @@ export default function Chicken() {
           // border={"1px solid red"}
           ml={"20px"}
           letterSpacing={"-2px"}
+          
         >
           CHICKEN BUCKETS
         </Heading>
       </Box>
       <Spacer h={"20px"} />
 
-      {loading && <Loading/>}
+      {/* {loading && <Loading/>} */}
       <Grid
         templateColumns={"repeat(2, 1fr)"}
         rowGap="50px"
@@ -65,7 +66,7 @@ export default function Chicken() {
         // border="1px solid red"
         mt={"20px"}
       >
-        {data.map((ele) => (
+        {chicken.map((ele) => (
           <GridItem colSpan={{ base: 2, md: 1, sm: 1 }} ml="20px" key={ele.id}>
             <Img
               src={ele.image}

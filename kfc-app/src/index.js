@@ -11,7 +11,7 @@ import {CartContextProvider} from './context/cartcontext/CartContext';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <ChakraProvider>
-      <BrowserRouter>
+      <BrowserRouter >
       <CartContextProvider>
         <App />
       </CartContextProvider>
