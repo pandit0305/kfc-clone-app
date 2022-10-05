@@ -1,8 +1,11 @@
+import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { authentication } from "../firebase-config";
+import { authentication } from "../context/firebase/firebase-config";
 import { RecaptchaVerifier } from "firebase/auth";
 import { signInWithPhoneNumber } from "firebase/auth";
+import { AuthContext } from "../context/authcontext/AuthContext";
+
 
 import {
   Box,
@@ -28,7 +31,7 @@ const mypin = {
 };
 
 export default function Login() {
-
+  const {setUser}  = React.useContext(AuthContext);
   const countryCode  = "+91";
   const [phone, setPhone] = useState(countryCode);
   const [pin, setPin] = useState(mypin);
@@ -58,8 +61,8 @@ export default function Login() {
       console.log(phone)
       setShow(true)
       generateourCaptcha()
-      let appVerifier = window.recaptchaVerifier;
       setTimeout(() => {
+        let appVerifier = window.recaptchaVerifier;
           signInWithPhoneNumber(authentication, phone, appVerifier)
           .then(confirmationResult=>{
             window.confirmationResult = confirmationResult;
@@ -81,6 +84,7 @@ export default function Login() {
   };
 
   const OnsubmitEvent = () => {
+    setUser(true);
     const otp = pin.a + pin.b + pin.c + pin.d + pin.e + pin.f;
 
     if(otp.length===6){

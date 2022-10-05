@@ -1,6 +1,11 @@
-
-import { Flex, Box, Grid, GridItem, Button, Center} from "@chakra-ui/react";
+import React from "react";
+import { ExternalLinkIcon } from "@chakra-ui/icons";
+import { NavLink } from "react-router-dom";
+import { Flex, Box, Grid, GridItem, Button, Center } from "@chakra-ui/react";
 import { Icon } from "@iconify/react";
+import { AuthContext } from "../context/authcontext/AuthContext";
+import MyAccount from "./MyAccount";
+
 import {
   Modal,
   Img,
@@ -13,11 +18,6 @@ import {
   ModalCloseButton,
   useDisclosure,
 } from "@chakra-ui/react";
-import { ExternalLinkIcon } from "@chakra-ui/icons";
-import { NavLink } from "react-router-dom";
-
-
-
 
 const links = [
   { path: "/menu", title: "Menu" },
@@ -30,7 +30,13 @@ const home =
 
 const find = "Find A KFC";
 const order = "Start Order";
-const login = <Icon icon="teenyicons:user-circle-solid" fontSize={"30px"} />;
+const login = (
+  <Box mt="5px">
+    <NavLink to="/login">
+      <Icon icon="teenyicons:user-circle-solid" fontSize={"30px"}/>
+    </NavLink>
+  </Box>
+);
 const cart = <Icon icon="mingcute:shopping-bag-2-line" fontSize={"30px"} />;
 
 export const temp = (
@@ -41,169 +47,159 @@ export const temp = (
   </Grid>
 );
 
-
-
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { user } = React.useContext(AuthContext);
 
-
-const navbar = (
-<Box position={"fixed"} w="100%" zIndex={"1000"} bgColor={"white"}>
-<Flex
-  justifyContent={"space-between"}
-  w="1103.12px"
-  h={"100px"}
-  m={"auto"}
-  position={"relative"}
->
-  <Box>
-    {temp}
-    <Flex w={"700px"} gap={"50px"} mt="30px">
-      <NavLink to={"/"}>
-        <Img
-          src={home}
-          alt="logo_kfc"
-          w="200px"
-          h="40px"
-          mt={"-5px"}
-          borderRadius={"10px"}
-        />
-      </NavLink>
-      {links.map((ele) => (
-        <NavLink
-          key={ele.path}
-          to={ele.path}
-          style={{ fontWeight: "bold", fontSize: "14px" }}
-        >
-          {ele.title}
-        </NavLink>
-      ))}
-      <NavLink
-        to={"/find_kfc"}
-        style={{ fontWeight: "bold", fontSize: "14px" }}
+  const navbar = (
+    <Box position={"fixed"} w="100%" zIndex={"1000"} bgColor={"white"}>
+      <Flex
+        justifyContent={"space-between"}
+        w="1103.12px"
+        h={"100px"}
+        m={"auto"}
+        position={"relative"}
+        // border={"1px solid red"}
       >
-        {find}
-        <ExternalLinkIcon fontSize={"13px"} mb="3px" ml="3px" />
-      </NavLink>
-    </Flex>
-  </Box>
-  <Box>
-    <Flex w="370px" mt={"40px"} gap="30px">
-      <NavLink to={"/start_order"}>
-        <Button
-          w={"165px"}
-          h="44px"
-          borderRadius={"30px"}
-          bgColor="red"
-          color={"white"}
-          fontWeight="bold"
-          _hover={"red.200"}
-        >
-          {order}
-        </Button>
-      </NavLink>
-      <NavLink to='/login'>
-        <Button _hover={"none"} bg={"white"}>
-          {login}
-        </Button>
-      </NavLink>
-      <NavLink to={"/cart"}>
-        <Button _hover={"none"} bg={"white"}>
-          {cart}
-        </Button>
-      </NavLink>
-    </Flex>
-  </Box>
-</Flex>
-<Box
-  position={"fixed"}
-  w="100%"
-  zIndex={"1000"}
-  bgColor={"#202124"}
-  _hover={{ background: "rgba(0, 0, 0, 0.9)" }}
->
-  <Box>
-    <Box onClick={onOpen} w={"100%"} h="40px">
-      <Center mt={"0px"} cursor="pointer">
-        <Text mt={"10px"}>
-          <Icon
-            icon="carbon:location-filled"
-            color="red"
-            fontSize={"20px"}
-          />
-        </Text>
-        <Text color={"white"} ml="5px" mt={"5px"}>
-          Start an Order for Pickup or Delivery
-        </Text>
-      </Center>
+        <Box >
+          {temp}
+          <Flex w={"700px"} gap={"50px"} mt="30px">
+            <NavLink to={"/"}>
+              <Img
+                src={home}
+                alt="logo_kfc"
+                w="200px"
+                h="40px"
+                mt={"-5px"}
+                borderRadius={"10px"}
+              />
+            </NavLink>
+            {links.map((ele) => (
+              <NavLink
+                key={ele.path}
+                to={ele.path}
+                style={{ fontWeight: "bold", fontSize: "14px" }}
+              >
+                {ele.title}
+              </NavLink>
+            ))}
+            <NavLink
+              to={"/find_kfc"}
+              style={{ fontWeight: "bold", fontSize: "14px" }}
+            >
+              {find}
+              <ExternalLinkIcon fontSize={"13px"} mb="3px" ml="3px" />
+            </NavLink>
+          </Flex>
+        </Box>
+        <Box>
+          <Flex w="380px" mt={"40px"} gap="30px" >
+            <NavLink to={"/start_order"}>
+              <Button
+                w={"165px"}
+                h="44px"
+                borderRadius={"30px"}
+                bgColor="red"
+                color={"white"}
+                fontWeight="bold"
+                _hover={"red.200"}
+              >
+                {order}
+              </Button>
+            </NavLink>
+            <Box >
+            {!user ? login : <MyAccount />}
+            </Box>
+
+            <NavLink to={"/cart"}>
+              <Button _hover={"none"} bg={"white"} >
+                {cart}
+              </Button>
+            </NavLink>
+          </Flex>
+        </Box>
+      </Flex>
+      <Box
+        position={"fixed"}
+        w="100%"
+        zIndex={"-1"}
+        bgColor={"#202124"}
+        _hover={{ background: "rgba(0, 0, 0, 0.9)" }}
+      >
+        <Box>
+          <Box onClick={onOpen} w={"100%"} h="40px">
+            <Center mt={"0px"} cursor="pointer">
+              <Text mt={"10px"}>
+                <Icon
+                  icon="carbon:location-filled"
+                  color="red"
+                  fontSize={"20px"}
+                />
+              </Text>
+              <Text color={"white"} ml="5px" mt={"5px"}>
+                Start an Order for Pickup or Delivery
+              </Text>
+            </Center>
+          </Box>
+          <Modal isOpen={isOpen} onClose={onClose}>
+            <ModalOverlay />
+            <ModalContent maxW={{ base: "980px" }}>
+              <ModalHeader fontWeight={"bold"}>
+                <Center>START YOUR ORDER</Center>
+              </ModalHeader>
+              <ModalCloseButton />
+              <ModalBody
+                backgroundColor="lightgray"
+                borderBottomRadius={"10px"}
+              >
+                <Center
+                  w={"350px"}
+                  m="auto"
+                  textAlign={"center"}
+                  fontSize="25px"
+                  fontWeight={"bold"}
+                >
+                  LET'S GET STARTED. WOULD YOU LIKE PICKUP OR DELIVERY?
+                </Center>
+                <Spacer h={"15px"} />
+                <Center>
+                  <Text>
+                    Menu availability and pricing may vary between order types.
+                  </Text>
+                </Center>
+                <Spacer h={"15px"} />
+                <Grid
+                  templateColumns={"repeat(2, 1fr)"}
+                  ml={{ base: "200px", sm: "150px", lg: "200px" }}
+                >
+                  <GridItem colSpan={1}>
+                    <Button
+                      borderRadius={"30px"}
+                      border="1px solid black"
+                      p={"30px 40px 30px 40px"}
+                      fontWeight="bold"
+                    >
+                      QUICK PICK-UP
+                    </Button>
+                  </GridItem>
+                  <GridItem colSpan={{ base: 1, md: 2, sm: 2, lg: 1 }}>
+                    <Button
+                      borderRadius={"30px"}
+                      border="1px solid black"
+                      p={"30px 40px 30px 40px"}
+                      fontWeight="bold"
+                    >
+                      DELIVERY
+                    </Button>
+                  </GridItem>
+                </Grid>
+              </ModalBody>
+            </ModalContent>
+          </Modal>
+        </Box>
+      </Box>
     </Box>
-    <Modal isOpen={isOpen} onClose={onClose}>
-      <ModalOverlay />
-      <ModalContent maxW={{ base: "980px" }}>
-        <ModalHeader fontWeight={"bold"}>
-          <Center>START YOUR ORDER</Center>
-        </ModalHeader>
-        <ModalCloseButton />
-        <ModalBody
-          backgroundColor="lightgray"
-          borderBottomRadius={"10px"}
-        >
-          <Center
-            w={"350px"}
-            m="auto"
-            textAlign={"center"}
-            fontSize="25px"
-            fontWeight={"bold"}
-          >
-            LET'S GET STARTED. WOULD YOU LIKE PICKUP OR DELIVERY?
-          </Center>
-          <Spacer h={"15px"} />
-          <Center>
-            <Text>
-              Menu availability and pricing may vary between order types.
-            </Text>
-          </Center>
-          <Spacer h={"15px"} />
-          <Grid
-            templateColumns={"repeat(2, 1fr)"}
-            ml={{ base: "200px", sm: "150px", lg: "200px" }}
-          >
-            <GridItem colSpan={1}>
-              <Button
-                borderRadius={"30px"}
-                border="1px solid black"
-                p={"30px 40px 30px 40px"}
-                fontWeight="bold"
-              >
-                QUICK PICK-UP
-              </Button>
-            </GridItem>
-            <GridItem colSpan={{ base: 1, md: 2, sm: 2, lg: 1 }}>
-              <Button
-                borderRadius={"30px"}
-                border="1px solid black"
-                p={"30px 40px 30px 40px"}
-                fontWeight="bold"
-              >
-                DELIVERY
-              </Button>
-            </GridItem>
-          </Grid>
-        </ModalBody>
-      </ModalContent>
-    </Modal>
-  </Box>
-</Box>
-</Box>
-);
+  );
 
-
-// const showLogin = hide ?  <Login/> :navbar;
-
-
-return (
-    <>
-      {navbar}
-    </>
-)
+  return <>{navbar}</>;
 }
