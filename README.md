@@ -1,4 +1,4 @@
-# cumbersome-circle-9157
+# Kfc clone
 
 Vercel link
 https://kfc-app-pandit0305.vercel.app/
