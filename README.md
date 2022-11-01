@@ -31,7 +31,7 @@ https://mykfc-app.netlify.app/
 <img src="https://github.com/pandit0305/kfc-clone-app/blob/main/menu_page.png"/>
 
 # Login Page 
-### user can login with mobile no and receive otp on that number, But this functionality will work on localhost. This functionality is created with the help of firebase.
+### User can login with mobile no and receive otp on that number, But this functionality will work on localhost. This functionality is created with the help of firebase.
 <img src="https://github.com/pandit0305/kfc-clone-app/blob/main/login_page.png"/>
 
 # Add to cart page
