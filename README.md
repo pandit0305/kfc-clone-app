@@ -1,4 +1,4 @@
-# Kfc clone
+# KFC_WEBSITE_clone
 
 We have clone of KFC ecommerce application. The clone explain each menu item just like real site.
 To maintain the add to cart functionality, I have used reducer to manage the state.
