@@ -3,11 +3,11 @@
 We have clone of KFC ecommerce application. The clone explain each menu item just like real site.
 To maintain the add to cart functionality, I have used reducer to manage the state.
 ## Features:
-  Sign-in based on OTP
-  Show food based on Menu categories
-  Dynamic add to cart
-  Checkout payment
-  Add more item
+  #### Sign-in based on OTP
+  #### Show food based on Menu categories
+  #### Dynamic add to cart
+  #### Checkout payment
+  #### Add more item
 
 ## Tech Stack: 
 CSS | JavaScript | React js | firebase | Chakra UI
