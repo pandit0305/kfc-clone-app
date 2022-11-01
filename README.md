@@ -19,4 +19,8 @@ netlify link
 https://mykfc-app.netlify.app/
 
 # Landing Page
+### User can visit this page without login
 <img src="https://github.com/pandit0305/kfc-clone-app/blob/main/landing_page.png"/>
+#Home page
+### This is home page of different category
+<img src="https://github.com/pandit0305/kfc-clone-app/blob/main/home_page.png"/>
