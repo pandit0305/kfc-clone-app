@@ -19,3 +19,4 @@ netlify link
 https://mykfc-app.netlify.app/
 
 # Landing Page
+<img src="https://github.com/pandit0305/kfc-clone-app/blob/main/landing_page.png"/>
