@@ -16,7 +16,7 @@ Vercel link
 https://kfc-app-pandit0305.vercel.app/
 
 netlify link
-https://mykfc-app.netlify.app/
+https://comfy-axolotl-0e0960.netlify.app/
 
 # Landing Page
 ### User can visit this page without login
