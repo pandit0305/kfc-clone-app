@@ -16,7 +16,7 @@ Vercel link
 https://kfc-app-pandit0305.vercel.app/
 
 netlify link
-https://comfy-axolotl-0e0960.netlify.app/
+https://magical-sunflower-3e45ce.netlify.app/
 
 # Landing Page
 ### User can visit this page without login
