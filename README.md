@@ -13,7 +13,7 @@ To maintain the add to cart functionality, I have used reducer to manage the sta
 CSS | JavaScript | React js | firebase | Chakra UI
 
 Vercel link
-https://kfc-app-pandit0305.vercel.app/
+[https://kfc-app-pandit0305.vercel.app/](https://kfc-app-pandit0305.vercel.app/)
 
 netlify link
 https://magical-sunflower-3e45ce.netlify.app/
