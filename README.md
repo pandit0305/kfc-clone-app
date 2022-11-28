@@ -1,7 +1,7 @@
 # KFC_WEBSITE_clone
 
-We have clone of KFC ecommerce application. The clone explain each menu item just like real site.
-To maintain the add to cart functionality, I have used reducer to manage the state.
+We have a clone of the KFC e-commerce application. The clone explains each menu item just like the real site. To maintain the add-to-cart functionality, I have used a reducer to manage the state.
+
 ## Features:
   #### Sign-in based on OTP
   #### Show food based on Menu categories
